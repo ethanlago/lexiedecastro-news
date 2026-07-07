@@ -95,13 +95,18 @@ async function sendEmailNotification(newStories) {
         }
     });
 
+    const dashboardUrl = process.env.DASHBOARD_URL || 'https://ethanlago.github.io/lexiedecastro-news/';
+
     let storyHtml = newStories.map(s => `
         <div style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 20px;">
             <h2 style="color: #2563eb; margin-bottom: 5px;"><a href="${s.link}" style="text-decoration: none; color: #2563eb;">${s.title}</a></h2>
             <p style="color: #64748b; font-size: 14px;">Published: ${new Date(s.pubDate).toLocaleDateString()}</p>
             ${s.image ? `<img src="${s.image}" style="max-width: 100%; border-radius: 8px; margin-top: 10px;" />` : ''}
             <br/>
-            <a href="${s.link}" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #facc15; color: #0f172a; text-decoration: none; border-radius: 6px; font-weight: bold;">Read Story</a>
+            <div style="margin-top: 15px;">
+                <a href="${s.link}" style="display: inline-block; padding: 10px 20px; background-color: #facc15; color: #0f172a; text-decoration: none; border-radius: 6px; font-weight: bold; margin-right: 10px;">Read Story</a>
+                <a href="${dashboardUrl}" style="display: inline-block; padding: 10px 20px; background-color: #1e3a8a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Go to Dashboard</a>
+            </div>
         </div>
     `).join('');
 
@@ -115,6 +120,9 @@ async function sendEmailNotification(newStories) {
                 <p style="text-align: center; color: #475569; font-size: 16px;">The automated dashboard just detected new stories.</p>
                 <div style="background-color: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                     ${storyHtml}
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="${dashboardUrl}" style="display: inline-block; padding: 12px 24px; background-color: #1e3a8a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">View Full News Dashboard</a>
+                    </div>
                 </div>
             </div>
         `

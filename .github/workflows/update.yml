@@ -26,6 +26,7 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: node notifier.js
       - name: Commit and push changes
         run: |
