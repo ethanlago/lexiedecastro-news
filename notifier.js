@@ -103,10 +103,7 @@ async function sendEmailNotification(newStories) {
             <p style="color: #64748b; font-size: 14px;">Published: ${new Date(s.pubDate).toLocaleDateString()}</p>
             ${s.image ? `<img src="${s.image}" style="max-width: 100%; border-radius: 8px; margin-top: 10px;" />` : ''}
             <br/>
-            <div style="margin-top: 15px;">
-                <a href="${s.link}" style="display: inline-block; padding: 10px 20px; background-color: #facc15; color: #0f172a; text-decoration: none; border-radius: 6px; font-weight: bold; margin-right: 10px;">Read Story</a>
-                <a href="${dashboardUrl}" style="display: inline-block; padding: 10px 20px; background-color: #1e3a8a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Go to Dashboard</a>
-            </div>
+            <a href="${s.link}" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #facc15; color: #0f172a; text-decoration: none; border-radius: 6px; font-weight: bold;">Read Story</a>
         </div>
     `).join('');
 
