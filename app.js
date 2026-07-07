@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Fetch static JSON file directly
-        const response = await fetch('./stories.json');
+        const response = await fetch('./stories.json?t=' + new Date().getTime());
         const data = await response.json();
 
         // Remove loader
