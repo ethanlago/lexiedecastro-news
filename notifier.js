@@ -9,7 +9,10 @@ const CACHE_FILE = path.join(__dirname, 'stories.json');
 // Helper to scrape the latest stories
 async function scrapeStories() {
     console.log('Starting scraper for notifications...');
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ 
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
     
     await page.goto('https://www.kplctv.com/authors/lexie-decastro/', { waitUntil: 'networkidle2' });
